@@ -112,6 +112,16 @@ while running:
     text_rect.bottomright = (W - 10, H - 10)
     screen.blit(text_surface, text_rect)
 
+    # victory check
+    if depth_miles >= MAX_MILES:
+        victory_surface = font.render("VICTORY! 100 miles", True, (255, 215, 0))
+        victory_rect = victory_surface.get_rect(center=(W // 2, H // 2))
+        screen.blit(victory_surface, victory_rect)
+        pygame.display.flip()
+        pygame.time.delay(3000)
+        running = False
+        continue
+    
     # Heat tint overlay
     screen.blit(red_tint, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
@@ -120,11 +130,6 @@ while running:
         game_over_rect = game_over_surface.get_rect(center=(W // 2, H // 2))
         screen.blit(game_over_surface, game_over_rect)
         
-    if depth_miles >= 100*99:
-        victory_surface = font.render("You Win!", True, (0, 255, 0))
-        victory_rect = victory_surface.get_rect(center=(W // 2, H // 2))
-        screen.blit(victory_surface, victory_rect)
-
 
     pygame.display.flip()
 
