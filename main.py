@@ -1,6 +1,8 @@
 import pygame
 from movement import Worm  # your worm movement file
-from hydration import Hydration 
+from bar import Hydration 
+
+hydration = Hydration()
 
 pygame.init()
 W, H = 800, 600
@@ -15,6 +17,8 @@ camera_smooth = 5
 running = True
 while running:
     dt = clock.tick(60) / 1000
+    hydration.update(dt)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -30,6 +34,7 @@ while running:
     # Draw everything
     screen.fill((30, 22, 15))   # background
     worm.draw(screen, camera)   # draw worm
+    hydration.draw(screen, camera)  # draw hydration bar last so it's visible
     pygame.display.flip()
 
 pygame.quit()
