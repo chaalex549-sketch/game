@@ -118,8 +118,9 @@ while running:
     if health_bar.health <= 0 or hydration.hydration <= 0:
         game_over_surface = font.render("Game Over", True, (255, 0, 0))
         game_over_rect = game_over_surface.get_rect(center=(W // 2, H // 2))
-        screen.blit(game_over_surface, game_over_rect)
         screen.fill(0,0,0)
+        screen.blit(game_over_surface, game_over_rect)
+        
     
 
 
