@@ -120,7 +120,7 @@ while running:
         game_over_rect = game_over_surface.get_rect(center=(W // 2, H // 2))
         screen.blit(game_over_surface, game_over_rect)
         
-    if depth_miles >= 100*100:
+    if depth_miles >= 100*99:
         victory_surface = font.render("You Win!", True, (0, 255, 0))
         victory_rect = victory_surface.get_rect(center=(W // 2, H // 2))
         screen.blit(victory_surface, victory_rect)
