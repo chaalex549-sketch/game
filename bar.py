@@ -20,8 +20,17 @@ class Hydration:
         x = 10
         y = 10
         fill_width = int(bar_width * (self.hydration / 100))
+        # choose color: normal blue, flash red when low
+        if self.hydration < 25:
+            # alternate every half second
+            if (pygame.time.get_ticks() // 500) % 2 == 0:
+                fill_color = (255, 0, 0)
+            else:
+                fill_color = (0, 191, 255)
+        else:
+            fill_color = (0, 191, 255)
         pygame.draw.rect(screen, (255,255,255), (x, y, bar_width, bar_height), 2)  # border
-        pygame.draw.rect(screen, (0,191,255), (x+2, y+2, fill_width-4, bar_height-4))  # fill
+        pygame.draw.rect(screen, fill_color, (x+2, y+2, fill_width-4, bar_height-4))  # fill
 
 class Health:
     def __init__(self):
