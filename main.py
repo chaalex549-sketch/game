@@ -122,14 +122,19 @@ while running:
         running = False
         continue
     
-    # Heat tint overlay
-    screen.blit(red_tint, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-
     if health_bar.health <= 0 or hydration.hydration <= 0:
         game_over_surface = font.render("Game Over", True, (255, 0, 0))
         game_over_rect = game_over_surface.get_rect(center=(W // 2, H // 2))
         screen.blit(game_over_surface, game_over_rect)
-        
+        pygame.display.flip()
+        pygame.time.delay(3000)
+        running = False
+        continue
+
+    # Heat tint overlay
+    screen.blit(red_tint, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
+
+
 
     pygame.display.flip()
 
