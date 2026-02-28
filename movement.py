@@ -1,7 +1,7 @@
 import pygame, math
 
 class Worm:
-    def __init__(self, head_img_path, num_segments=15, start_pos=(400,300), speed=180):
+    def __init__(self, head_img_path, num_segments=15, start_pos=(0,0), speed=180):
         self.segments = [pygame.Vector2(start_pos) for _ in range(num_segments)]
         self.direction = pygame.Vector2(1,0)
         self.speed = speed
